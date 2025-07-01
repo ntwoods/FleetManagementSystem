@@ -23,7 +23,7 @@ async function updateVehicle(data) {
 
 async function deleteVehicle(id) {
   return await fetch(`${API_BASE}?action=deleteVehicle&id=${id}`, {
-    method: 'DELETE'
+    method: 'POST'
   });
 }
 
