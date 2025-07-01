@@ -1,24 +1,72 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Login - Fleet Management</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../assets/css/styles.css" />
-  <meta name="google-signin-client_id" content="360849757137-agopfs0m8rgmcj541ucpg22btep5olt3.apps.googleusercontent.com">
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta charset="UTF-8">
+  <title>Fleet Management Login</title>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f6f9;
+    }
+    h1 { margin-bottom: 24px; }
+  </style>
 </head>
 <body>
-  <header>
-    <h2>Fleet Management System</h2>
-  </header>
+  <h1>Fleet Management Login</h1>
 
-  <div class="container" style="text-align:center; margin-top: 100px;">
-    <h3>Login with Google</h3>
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <div id="g_id_onload"
+       data-client_id="360849757137-agopfs0m8rgmcj541ucpg22btep5olt3.apps.googleusercontent.com"
+       data-context="signin"
+       data-ux_mode="popup"
+       data-callback="handleCredentialResponse"
+       data-auto_prompt="false">
   </div>
 
-  <script src="../assets/js/auth.js"></script>
+  <div class="g_id_signin"
+       data-type="standard"
+       data-shape="pill"
+       data-theme="outline"
+       data-text="signin_with"
+       data-size="large"
+       data-logo_alignment="left">
+  </div>
+
+  <script>
+    const ROLE_MAP = {
+      "mis01@ntwoods.com": "owner",
+      "user1@ntwoods.com": "user",
+      "user2@ntwoods.com": "user"
+    };
+
+    function parseJwt(token) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      return JSON.parse(decodeURIComponent(escape(window.atob(base64))));
+    }
+
+    function handleCredentialResponse(response) {
+      const user = parseJwt(response.credential);
+      const email = user.email;
+
+      const role = ROLE_MAP[email];
+      if (role === "owner") {
+        sessionStorage.setItem("email", email);
+        sessionStorage.setItem("role", "owner");
+        window.location.href = "owner.html";
+      } else if (role === "user") {
+        sessionStorage.setItem("email", email);
+        sessionStorage.setItem("role", "user");
+        window.location.href = "user.html";
+      } else {
+        alert("Unauthorized email: " + email);
+      }
+    }
+  </script>
 </body>
 </html>
