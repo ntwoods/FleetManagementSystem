@@ -44,8 +44,8 @@ async function loadVehicles() {
       <td>${vehicle.brand}</td>
       <td>${vehicle.model}</td>
       <td>${vehicle.owner}</td>
-      <td id="ins-${vehicle.id}">${vehicle.insuranceExpiry}</td>
-      <td id="puc-${vehicle.id}">${vehicle.pucExpiry}</td>
+      <td id="ins-${vehicle.id}">${formatDate(vehicle.insuranceExpiry)}</td>
+      <td id="puc-${vehicle.id}">${formatDate(vehicle.pucExpiry)}</td>
       <td>
         <button onclick='editVehicle("${vehicle.id}")'>✏️</button>
         <button onclick='deleteVehicleConfirm("${vehicle.id}")'>🗑️</button>
