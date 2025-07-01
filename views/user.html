@@ -1,1 +1,41 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <header>
+    <h2>User Dashboard - Fleet Management</h2>
+    <button onclick="signOut()">Logout</button>
+  </header>
+
+  <div class="container">
+    <h3>Your Vehicles</h3>
+    <table id="vehicleTable">
+      <thead>
+        <tr>
+          <th>Reg No</th>
+          <th>Type</th>
+          <th>Brand</th>
+          <th>Model</th>
+          <th>Owner</th>
+          <th>Insurance Expiry</th>
+          <th>PUC Expiry</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- Add Vehicle / Document Upload / Modals could go here -->
+  </div>
+
+  <script src="../assets/js/fetchAPI.js"></script>
+  <script src="../assets/js/reminders.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
