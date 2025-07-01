@@ -1,1 +1,24 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Fleet Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com" />
+</head>
+<body>
+  <header>
+    <h2>Fleet Management System</h2>
+  </header>
+
+  <div class="container" style="text-align:center; margin-top: 100px;">
+    <h3>Login with Google</h3>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  </div>
+
+  <script src="../assets/js/auth.js"></script>
+</body>
+</html>
