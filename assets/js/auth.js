@@ -12,7 +12,7 @@ function onSignIn(googleUser) {
   }
 
   sessionStorage.setItem('email', email);
-  window.location.href = email === 'owner@ntwoods.com' ? 'owner.html' : 'user.html';
+  window.location.href = email === 'mis01@ntwoods.com' ? 'owner.html' : 'user.html';
 }
 
 function signOut() {
