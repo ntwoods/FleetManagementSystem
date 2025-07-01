@@ -68,6 +68,17 @@ function closeVehicleForm() {
   document.getElementById("vehicleModal").style.display = "none";
 }
 
+function formatDate(isoString) {
+  if (!isoString) return "";
+  const date = new Date(isoString);
+  return date.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: '2-digit'
+  });
+}
+
+
 function editVehicle(id) {
   const v = vehicles.find(v => v.id === id);
   if (!v) return;
